@@ -40,7 +40,6 @@
       <div *ngFor="let report of reportListExpensive; let i = index">
       <mat-list-item  style="display: block;" *ngIf="i <= 5">
         <div style="text-align: right;">{{report.description}}</div>
-        <div style="text-align: left;">{{report.value}}</div>
       </mat-list-item>
       <mat-divider></mat-divider>
     </div>
@@ -56,7 +55,6 @@
     <div *ngFor="let report of reportListIncome; let i = index">
       <mat-list-item style="display: block;" *ngIf="i <= 5">
         <div style="text-align: right;">{{report.description}}</div>
-        <div style="text-align: left;">{{report.value}}</div>
       </mat-list-item>
       <mat-divider></mat-divider>
     </div>
