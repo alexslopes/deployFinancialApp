@@ -1,0 +1,61 @@
+
+<h3>New Registry</h3>
+<hr>
+<h3></h3>
+<div class="form-size" >
+  <form novalidate [formGroup]="registryForm" (ngSubmit)="onSubmit()">
+    <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" placeholder="Description" type="text" required>
+      <mat-error *ngIf="formErrors.description">
+        {{ formErrors.description }}
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="fill">
+      <input matInput formControlName="value" placeholder="Value" type="number" step=".01" required>
+      <mat-error *ngIf="formErrors.value">
+        {{ formErrors.value }}
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="fill">
+      <mat-label for="category">Category:</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="home">Home</mat-option>
+        <mat-option value="health">Health</mat-option>
+        <mat-option value="shopping">Shopping</mat-option>
+        <mat-option value="job">Job</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="fill">
+      <mat-label for="date">Date:</mat-label>
+      <input matInput formControlName="date" type="date" id="date" name="date" required>
+      <mat-error *ngIf="formErrors.date">
+        {{ formErrors.date }}
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-radio-group aria-label="Select an option" formControlName="type">
+      <mat-radio-button value="expensive">Expensive</mat-radio-button>
+      <mat-radio-button value="income">Income</mat-radio-button>
+    </mat-radio-group>
+  </p>
+
+  <button type="submit" mat-button class="background-primary text-floral-white"
+       [disabled]="registryForm.invalid">Submit</button>
+
+  </form>
+
+
+</div>

@@ -1,0 +1,65 @@
+<mat-grid-list cols="3" rowHeight="2:1">
+  <mat-grid-tile>
+    <div class="container">
+      <h4>TOTAL OUTGOING</h4>
+      <p>$ {{this.totalOutcome}}</p>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="container">
+      <h4>TOTAL INCOME</h4>
+      <p>$ {{this.totalIncome}}</p>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="container">
+      <h4>TOTAL</h4>
+      <p>$ {{this.totalIncome - this.totalOutcome}}</p>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="3" rowHeight="1:1">
+
+  <mat-grid-tile colspan="3">
+    <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="categoryList" [gradient]="gradient"
+      [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut"
+      (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+    </ngx-charts-pie-chart>
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile colspan="1">
+    <mat-list style="margin: 10px;" >
+      <mat-list-item>
+          <h1>Top Expensives</h1>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div *ngFor="let report of reportListExpensive; let i = index">
+      <mat-list-item  style="display: block;" *ngIf="i <= 5">
+        <div style="text-align: right;">{{report.description}}</div>
+        <div style="text-align: left;">{{report.value}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+    </mat-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1">
+    <mat-list style="margin: 10px;" >
+      <mat-list-item>
+        <h1>Top Incomes</h1>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div *ngFor="let report of reportListIncome; let i = index">
+      <mat-list-item style="display: block;" *ngIf="i <= 5">
+        <div style="text-align: right;">{{report.description}}</div>
+        <div style="text-align: left;">{{report.value}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+    </mat-list>
+  </mat-grid-tile>
+</mat-grid-list>
